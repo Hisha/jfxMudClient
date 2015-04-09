@@ -1,32 +1,53 @@
 package com.HishaTech.java.jfxMudClient;
 
+import java.io.IOException;
+import java.net.URL;
+
+import com.HishaTech.java.jfxMudClient.gui.Controller_Main;
+import com.HishaTech.java.jfxMudClient.gui.GUIConstants;
+import com.HishaTech.java.jfxMudClient.gui.Navigation;
+
 import javafx.application.Application;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 
 public class Main extends Application {
 
 	@Override
-	public void start(Stage primaryStage) {
+	public void start(Stage primaryStage) throws IOException {
 
-		try {
+		Stage stage = new Stage();
+		stage.setScene(createScene(loadMainPane()));
+		stage.show();
 
-			BorderPane root = (BorderPane) FXMLLoader.load(getClass()
-					.getResource("gui/fxml/Main.fxml"));
-			Scene scene = new Scene(root, 400, 400);
-			scene.getStylesheets().add(
-					getClass().getResource("css/application.css")
-							.toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
+	}
 
-		} catch (Exception e) {
+	private Scene createScene(Pane mainPane) {
 
-			e.printStackTrace();
+		Rectangle2D visualBounds = Screen.getPrimary().getVisualBounds();
+		Double sceneHeight = visualBounds.getHeight();
+		Double sceneWidth = visualBounds.getWidth();
+		Scene scene = new Scene(mainPane, sceneWidth, sceneHeight);
+		scene.getStylesheets().add(
+				getClass().getResource("css/application.css").toExternalForm());
+		return scene;
 
-		}
+	}
+
+	private Pane loadMainPane() throws IOException {
+
+		URL url = getClass().getResource(GUIConstants.fxml_Main);
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(url);
+		Pane dtPane = (Pane) loader.load(url.openStream());
+		Controller_Main mainController = loader.getController();
+		Navigation.setController(mainController);
+		Navigation.loadDTVista(GUIConstants.fxml_GameScreen);
+		return dtPane;
 
 	}
 

@@ -1,10 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	
-<?import javafx.scene.layout.BorderPane?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+
+
+<AnchorPane minHeight="600.0" minWidth="800.0"
+	xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
 	fx:controller="com.HishaTech.java.jfxMudClient.gui.Controller_Main">
-
-	<!-- TODO Add Nodes -->
-
-</BorderPane>
+	<children>
+		<MenuBar fx:id="menuBar" prefWidth="-1.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="0.0">
+			<menus>
+				<Menu fx:id="FileMenu" mnemonicParsing="false">
+					<items>
+						<SeparatorMenuItem mnemonicParsing="false" />
+						<MenuItem fx:id="FileMenu_Exit" mnemonicParsing="false"
+							onAction="#handleExitAction" />
+					</items>
+				</Menu>
+			</menus>
+		</MenuBar>
+		<StackPane fx:id="mainHolder" AnchorPane.bottomAnchor="0.0"
+			AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+			AnchorPane.topAnchor="24.0" />
+	</children>
+</AnchorPane>
