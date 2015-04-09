@@ -8,5 +8,11 @@
 			<attribute name="javadoc_location" value="jar:platform:/resource/jfxMudClient/libs/commons-net/commons-net-3.3-javadocs.zip!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="libs/sqlite4java/sqlite4java.jar" sourcepath="libs/sqlite4java/sqlite4java-src.zip">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/jfxMudClient/libs/sqlite4java/sqlite4java-docs.zip!/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="jfxMudClient/libs/sqlite4java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
